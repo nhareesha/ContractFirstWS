@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="createEmployee"
+	targetNamespace="http://www.example.org/createEmployee/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://www.example.org/createEmployee/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/createEmployee/">
+			<xsd:import schemaLocation="../schema/Employee.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="addEmployeeRequest">
+		<wsdl:part name="reqObj" element="tns:EmployeeRequestType"/>
+	</wsdl:message>
+	<wsdl:message name="addEmployeeResponse">
+		<wsdl:part name="respObj" element="tns:EmployeeResponseType"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="addEmployeePortType">
+		<wsdl:operation name="addEmployee">
+			<wsdl:input  name="addEmployeeRequest" message="tns:NewOperationRequest"/>
+			<wsdl:output name="addEmployeeResponse" message="tns:NewOperationResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="addEmp_Binding" type="tns:addEmployeePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		<wsdl:operation name="addEmployee">
+			<soap:operation soapAction="http://www.example.org/createEmployee/addEmployee" />
+			<wsdl:input name="addEmployeeRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="addEmployeeResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		</wsdl:binding>
+
+	<wsdl:service name="addEmployeeService">		<wsdl:port name="addEmployeePort"
+			binding="tns:addEmp_Binding">
+			<soap:address
+				location="http://localhost:8080/service/addEmployee" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
