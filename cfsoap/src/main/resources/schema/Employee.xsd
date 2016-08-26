@@ -5,10 +5,10 @@
     
     <complexType name="EmployeeRequestType">
     	<all>
-    		<element name="fname" type="string"></element>
-    		<element name="lname" type="string"></element>
-    		<element name="salary" type="double"></element>
-    		<element name="type" type="string"></element>
+    		<element name="fname" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="lname" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="salary" type="double" maxOccurs="1" minOccurs="1"></element>
+    		<element name="type" type="string" maxOccurs="1" minOccurs="1"></element>
     	</all>
     </complexType>
 
@@ -19,7 +19,7 @@
     		<element name="EmpId" type="string" maxOccurs="1"
     			minOccurs="1">
     		</element>
-    		<element name="type" type="string"></element>
+    		<element name="type" type="string" maxOccurs="1" minOccurs="1"></element>
     	</all>
     </complexType>
 </schema>
