@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Employee" xmlns:tns="http://www.example.org/Employee" elementFormDefault="qualified">
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.example.org/Employee" 
+xmlns:tns="http://www.example.org/Employee" elementFormDefault="qualified"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <element name="Employee" type="tns:EmployeeRequestType"></element>
+    <xsd:element name="Employee" type="tns:EmployeeRequestType"></xsd:element>
     
-    <complexType name="EmployeeRequestType">
-    	<all>
-    		<element name="fname" type="string" maxOccurs="1" minOccurs="1"></element>
-    		<element name="lname" type="string" maxOccurs="1" minOccurs="1"></element>
-    		<element name="salary" type="double" maxOccurs="1" minOccurs="1"></element>
-    		<element name="type" type="string" maxOccurs="1" minOccurs="1"></element>
-    	</all>
-    </complexType>
+    <xsd:complexType name="EmployeeRequestType">
+    	<xsd:all>
+    		<xsd:element name="fname" type="string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="lname" type="string" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="salary" type="double" maxOccurs="1" minOccurs="1"></xsd:element>
+    		<xsd:element name="type" type="string" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:all>
+    </xsd:complexType>
 
-    <element name="EmployeeResponse" type="tns:EmployeeResponseType"></element>
+    <xsd:element name="EmployeeResponse" type="tns:EmployeeResponseType"></xsd:element>
     
-    <complexType name="EmployeeResponseType">
-    	<all>
-    		<element name="EmpId" type="string" maxOccurs="1"
-    			minOccurs="1">
-    		</element>
-    		<element name="type" type="string" maxOccurs="1" minOccurs="1"></element>
-    	</all>
-    </complexType>
-</schema>
+    <xsd:complexType name="EmployeeResponseType">
+    	<xsd:all>
+    		<xsd:element name="EmpId" type="string" maxOccurs="1" minOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="type" type="string" maxOccurs="1" minOccurs="1"></xsd:element>
+    	</xsd:all>
+    </xsd:complexType>
+</xsd:schema>
