@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.webservice.cfservice</groupId>
+  <artifactId>cfsoap</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Create Employee Webservice</name>
+  <description>Contract First soap web service</description>
+  <packaging>war</packaging>
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api -->
+		<dependency>
+		    <groupId>javax.xml.ws</groupId>
+		    <artifactId>jaxws-api</artifactId>
+		    <version>2.2.11</version>
+		    <scope>provided</scope>
+		</dependency>
+  		<!-- https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
+		<dependency>
+		    <groupId>com.sun.xml.ws</groupId>
+		    <artifactId>jaxws-rt</artifactId>
+		    <version>2.2.7</version>
+		</dependency>
+	<dependency>
+        <groupId>com.sun.xml.ws</groupId>
+        <artifactId>jaxws-tools</artifactId>
+        <version>2.2.5</version>
+   </dependency>
+
+  </dependencies>
+  <build>
+  	<plugins>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.0.2</version>
+		<configuration>
+			<source>1.6</source>
+			<target>1.6</target>
+		</configuration>
+	</plugin>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-war-plugin</artifactId>
+		<version>2.1.1</version>
+		<configuration>
+			<failOnMissingWebXml>false</failOnMissingWebXml>
+		</configuration>
+	</plugin>
+
+	<plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>build-helper-maven-plugin</artifactId>
+		<executions>
+			<execution>
+				<id>add-source</id>
+				<phase>generate-sources</phase>
+				<goals>
+					<goal>add-source</goal>
+				</goals>
+				<configuration>
+					<sources>
+						<source>${basedir}/target/generated/src/main/java</source>
+					</sources>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin>
+
+	<plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>jaxws-maven-plugin</artifactId>
+		<version>1.12</version>
+		<configuration>
+			<wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
+			<packageName>com.cfsoap.ws.service</packageName>
+			<keep>true</keep>
+			<sourceDestDir>${basedir}/target/generated/src/main/java</sourceDestDir>
+		</configuration>
+		<executions>
+			<execution>
+				<goals>
+					<goal>wsimport</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
+</plugins>
+  
+  </build>
+  
+  
+  
+</project>
